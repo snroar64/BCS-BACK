@@ -2,6 +2,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ObjectId,
   ObjectIdColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -9,7 +10,10 @@ import {
 @Entity()
 export class Product {
   @ObjectIdColumn()
-  id: Object;
+  id?: Object;
+
+  @ObjectIdColumn()
+  _id?: ObjectId;
 
   @Column()
   name: string;
@@ -30,14 +34,12 @@ export class Product {
   description?: string;
 
   @CreateDateColumn({
-    name: 'created_at',
     nullable: false,
     type: 'timestamptz',
   })
-  createdAt: Date;
+  createdAt?: Date;
 
   @UpdateDateColumn({
-    name: 'updated_at',
     nullable: true,
     type: 'timestamptz',
   })
